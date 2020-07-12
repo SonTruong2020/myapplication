@@ -2,10 +2,8 @@ import subprocess
 
 def get_git_repo_hash():
     hashes = []
-    hashes.append('version: ')
-    hashes.append(subprocess.check_output(['git', 'tag']))
-    hashes.append('lastcommitsha: ')
-    hashes.append(subprocess.check_output(['git', 'rev-parse', 'HEAD']))
+    hashes.append('version: ' + str(subprocess.check_output(['git', 'tag'])))
+    hashes.append('lastcommitsha: ' + str(subprocess.check_output(['git', 'rev-parse', 'HEAD'])))
     hashes.append('description: pre-interview technical test')
     
     return hashes

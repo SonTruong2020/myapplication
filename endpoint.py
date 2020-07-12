@@ -6,8 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def endpoint():
+    hash = gitrepohash.get_git_repo_hash()
+    
     page = '<html><body><h1>'
-    page += gitrepohash
+    for h in hash:
+        page += h + '\n'
     page += '<h1></body></html>'
     return page
 
