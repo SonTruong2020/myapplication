@@ -12,10 +12,10 @@ COPY app ./app
 
 FROM python:3.5-slim-buster
 
+WORKDIR /src
+
 COPY --from=base /src /src
 
 COPY --from=base /root/.local /root/.local
-
-WORKDIR /src
 
 CMD python ./endpoint.py
