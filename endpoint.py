@@ -6,7 +6,7 @@ from app import gitrepohash
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/version")
 def endpoint():
     hash = gitrepohash.get_git_repo_hash()
     
