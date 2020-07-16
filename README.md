@@ -7,15 +7,20 @@ Updates to the repository will automatically trigger Travis to run unit tests ag
 
 Application: 
 Application can be run using Python.
-python endpoint.py
+    
+    python endpoint.py
 
 Docker Build:
-  docker build -t myapplication .
+
+    docker build -t myapplication .
+    
 run:
-  docker run -p 5000:5000 --rm -it myapplication
+
+    docker run -p 5000:5000 --rm -it myapplication
 
 
 Full details of application logic:
+
 The application consists of 3 components.
 
 gitrepohash.py: This module retrieves the repo tag and latest commit sha and return a list with all information to be presented on a web endpoint.
