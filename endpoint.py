@@ -2,22 +2,27 @@ import os
 import json
 
 from flask import Flask
+
 from app import gitrepohash
 
 app = Flask(__name__)
 
-@app.route("/version")
+@app.route("/")
 def endpoint():
-    hash = gitrepohash.get_git_repo_hash()
-    
-    page = '<html><body><h1>'
-    page += json.dumps('myapplication:') + '<br>'
 
-    for h in hash:
-        print(h)
-        page += json.dumps(h,indent=4)  + '<br>'
-    
+    page = '<html><body><h1>'
+    page += 'Welcome: Please go to /version to see application version and last commit hash.'
     page += '<h1></body></html>'
+    return page
+
+
+@app.route("/version")
+def endpoint1():
+ #   page = gitrepohash.get_git_repo_hash()
+    page = '<html><body><h1>'
+    page += json.dumps(gitrepohash.get_git_repo_hash(),indent=4)
+    page += '<h1></body></html>'
+
     return page
 
 if __name__ == "__main__":

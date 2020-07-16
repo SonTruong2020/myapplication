@@ -1,8 +1,8 @@
-FROM python:3.5 as base
+FROM python:3.8-alpine3.12 as base
 
 WORKDIR /src
 
-COPY requirements.txt ./requirements.txt
+COPY . .
 
 RUN pip install --user -r ./requirements.txt
 
@@ -10,9 +10,14 @@ COPY endpoint.py .
 
 COPY app ./app
 
-FROM python:3.5-slim-buster
+# Was unable to find a smaller image to reduce size
+FROM python:3.8-alpine3.12
 
 WORKDIR /src
+
+RUN apk update
+
+RUN apk add git
 
 COPY --from=base /src /src
 
